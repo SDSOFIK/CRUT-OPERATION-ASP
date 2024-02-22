@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CURO.Models.Student>
+@{
+    int IdNo = 1;
+}
+<div class="text-center text-dark">
+    <h2>Student Information</h2>
+</div>
+<a asp-action="CeratForm" asp-controller="Student" class="btn btn-outline-secondary">Add Student</a>
+
+<div class="container  mt-4">
+    <table class="table table-bordered  shadow p-3 mb-5 bg-white rounded">
+        
+        <thead class="text-center">
+            <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>Subject</th>
+            <th>City</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@IdNo</td>
+                    <td>@item.Name</td>
+                    <td>@item.Roll</td>
+                    <td>@item.Subject</td>
+                    <td>@item.City</td>
+                    <td>
+                        <a asp-action="CeratForm" asp-controller="student" asp-route-id="@item.Id" class="btn btn-outline-success">Edit</a>
+                        <a asp-action="Ditelis" asp-controller="Student" asp-route-id="@item.Id" class="btn btn-outline-primary">Ditelis</a>
+                        <a asp-action="Delete" asp-controller="Student" asp-route-id="@item.Id" onclick="return confirm('are you sure delete')" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+                IdNo++;
+            }
+        </tbody>
+    </table>
+</div>

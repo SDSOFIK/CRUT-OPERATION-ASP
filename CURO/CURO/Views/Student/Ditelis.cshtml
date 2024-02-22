@@ -1,0 +1,27 @@
+﻿@model CURO.Models.Student
+
+@{
+
+}
+
+<h1 class="text-center">Student Details</h1>
+<div class="container">
+    @if (Model != null)
+    {
+        <p> Id No: @Model.Id</p>
+        <p> Name : @Model.Name</p>
+        <p>Roll No : @Model.Roll</p>
+        <p>Subject : @Model.Subject</p>
+        <p>City : @Model.City</p>
+    }
+    else
+    {
+        <p> noo data </p>
+    }
+    
+    
+</div>
+
+
+<a asp-action="Index" asp-controller="Student" class="btn btn-outline-success mt-3">Back to List</a>
+
