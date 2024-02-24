@@ -2,6 +2,7 @@
 using CURO.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static CURO.Helper;
 
 namespace CURO.Controllers
 {
@@ -19,6 +20,7 @@ namespace CURO.Controllers
             var data = await _dbcontext.Set<Student>().AsNoTracking().ToListAsync();
             return View(data);
         }
+        [NoDirectAccess]
         [HttpGet]
         public async Task<IActionResult> CeratForm(int id)
         {
@@ -66,11 +68,18 @@ namespace CURO.Controllers
             }
             return RedirectToAction("Index");
         }
+        [NoDirectAccess]
         public async Task<IActionResult> Ditelis(int id)
         {
             var data = await _dbcontext.Set<Student>().FindAsync(id);
 
             return View(data);
+        }
+        [NoDirectAccess]
+        public async Task<IActionResult> GetAll()
+        {
+            var data = await _dbcontext.Set<Student>().AsNoTracking().ToListAsync();
+            return Json(data);
         }
 
     }
